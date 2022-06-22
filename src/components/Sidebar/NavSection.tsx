@@ -6,7 +6,7 @@ interface NavSectionProps {
   children: ReactNode
 }
 
-const NavSection = ({ title, children }: NavSectionProps) => {
+export const NavSection = ({ title, children }: NavSectionProps) => {
   return (
     <Box>
       <Text fontWeight="bold" color="gray.400" fontSize="small">{title}</Text>
@@ -16,5 +16,3 @@ const NavSection = ({ title, children }: NavSectionProps) => {
     </Box>
   )
 }
-
-export default NavSection
