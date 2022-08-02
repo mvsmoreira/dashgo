@@ -1,5 +1,6 @@
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -20,8 +21,11 @@ const SignIn = () => {
     resolver: yupResolver(signInFormSchema)
   })
 
+  const router = useRouter()
+
   const handleSignIn: SubmitHandler<FormData> = (data) => {
-    console.log(data)
+    // console.log(data)
+    router.push('/dashboard')
   }
 
   return (
