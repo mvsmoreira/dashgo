@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { api } from "../api"
 
 type User = {
-  id: string,
+  id: number,
   name: string,
   email: string,
   createdAt: string
@@ -43,6 +43,6 @@ export const getUsers = async (page: number): Promise<GetUserResponse> => {
 
 export const useUsers = (page: number) => {
   return useQuery(['users', page], () => getUsers(page), {
-    staleTime: 1000 * 5 // 5 seconds
+    staleTime: 1000 * 60 * 10 // 10 minutes
   })
 }
