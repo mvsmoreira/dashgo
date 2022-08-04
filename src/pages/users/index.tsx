@@ -7,10 +7,10 @@ import Header from "../../components/Header"
 import Pagination from "../../components/Pagination"
 import Sidebar from "../../components/Sidebar"
 import { api } from "../../services/api"
-import { useUsers } from "../../services/hooks/useUsers"
+import { GetUserResponse, useUsers } from "../../services/hooks/useUsers"
 import { queryClient } from "../../services/queryClient"
 
-const UserList = () => {
+const UserList = ({ users }: GetUserResponse) => {
   const [page, setPage] = useState(1)
   const { data, isLoading, isFetching, error } = useUsers(page)
 
@@ -21,7 +21,7 @@ const UserList = () => {
 
   const handlePrefetchUser = async (userId: string) => {
     await queryClient.prefetchQuery(['user', userId], async () => {
-      const response = await api.get(`/users/${userId}`)
+      const response = await api.get(`users/${userId}`)
 
       return response.data
     }, {
@@ -122,3 +122,13 @@ const UserList = () => {
 }
 
 export default UserList
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { users, totalCount } = await getUsers(1)
+
+//   return {
+//     props: {
+//       users,
+//     }
+//   }
+// }
