@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker'
+import { faker } from '@faker-js/faker/locale/pt_BR'
 import { ActiveModelSerializer, createServer, Factory, Model, Response } from 'miragejs'
 
 type User = {
@@ -19,8 +19,8 @@ export const makeServer = () => {
 
     factories: {
       user: Factory.extend({
-        name(i: number) {
-          return `User ${i + 1}`
+        name() {
+          return `${faker.name.firstName()} ${faker.name.lastName()}`
         },
         email() {
           return faker.internet.email().toLowerCase()

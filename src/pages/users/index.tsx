@@ -92,7 +92,7 @@ const UserList = ({ users }: GetUserResponse) => {
                           <Text fontSize="sm" color="gray.300">{user.email}</Text>
                         </Box>
                       </Td>
-                      {isWideVersion && <Td>{user.createdAt}</Td>}
+                      {isWideVersion && <Td>{user.created_at}</Td>}
                       {/* <Td>
                   <Button
                     as="a"
